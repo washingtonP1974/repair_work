@@ -1,5 +1,4 @@
 #!/bin/bash
-
 free -h
 sudo swapoff -av ; sudo swapon -av
 sudo du -h /var/cache/apt/archives
@@ -10,7 +9,7 @@ sysctl -w vm.drop_caches=2
 sync && sudo sysctl -w vm.drop_caches=1
 sync && sudo sysctl -w vm.drop_caches=2
 sudo apt-get clean && sudo apt-get autoclean
-journalctl --disk-usage
+sudo journalctl --disk-usage
 sudo journalctl --vacuum-time=30d
 du -sh ~/.cache/thumbnails
 rm -rf ~/.cache/thumbnails/*
@@ -29,5 +28,6 @@ sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get full-upgrade
 sudo apt-get dist-upgrade
-sudo update-grub
-sudo grub-mkconfig -o /boot/grub/grub.cfg
+#optional to update grub, just uncomment the (#)
+#sudo update-grub
+#sudo grub-mkconfig -o /boot/grub/grub.cfg
